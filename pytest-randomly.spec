@@ -5,23 +5,27 @@
 # Source0 file verified with key 0xEC7125C934883BE5 (me@adamj.eu)
 #
 Name     : pytest-randomly
-Version  : 1.2.3
-Release  : 2
-URL      : https://files.pythonhosted.org/packages/af/07/e33ee3da939f9f0eb718777533bfe1087570f3b0f80625dc3cc8888e01a3/pytest-randomly-1.2.3.tar.gz
-Source0  : https://files.pythonhosted.org/packages/af/07/e33ee3da939f9f0eb718777533bfe1087570f3b0f80625dc3cc8888e01a3/pytest-randomly-1.2.3.tar.gz
-Source99 : https://files.pythonhosted.org/packages/af/07/e33ee3da939f9f0eb718777533bfe1087570f3b0f80625dc3cc8888e01a3/pytest-randomly-1.2.3.tar.gz.asc
+Version  : 2.0.0
+Release  : 3
+URL      : https://files.pythonhosted.org/packages/35/72/aae474fbd217a02013a15c89713ae3c043d32c3edb4c4f1d96e6d01a8998/pytest-randomly-2.0.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/35/72/aae474fbd217a02013a15c89713ae3c043d32c3edb4c4f1d96e6d01a8998/pytest-randomly-2.0.0.tar.gz
+Source99 : https://files.pythonhosted.org/packages/35/72/aae474fbd217a02013a15c89713ae3c043d32c3edb4c4f1d96e6d01a8998/pytest-randomly-2.0.0.tar.gz.asc
 Summary  : Pytest plugin to randomly order tests and control random.seed.
 Group    : Development/Tools
 License  : BSD-3-Clause
-Requires: pytest-randomly-python3
-Requires: pytest-randomly-license
-Requires: pytest-randomly-python
+Requires: pytest-randomly-license = %{version}-%{release}
+Requires: pytest-randomly-python = %{version}-%{release}
+Requires: pytest-randomly-python3 = %{version}-%{release}
 Requires: pytest
 BuildRequires : buildreq-distutils3
+BuildRequires : pytest
 
 %description
+===============
 pytest-randomly
-        ===============
+===============
+.. image:: https://img.shields.io/travis/pytest-dev/pytest-randomly.svg
+:target: https://travis-ci.org/pytest-dev/pytest-randomly
 
 %package license
 Summary: license components for the pytest-randomly package.
@@ -50,20 +54,21 @@ python3 components for the pytest-randomly package.
 
 
 %prep
-%setup -q -n pytest-randomly-1.2.3
+%setup -q -n pytest-randomly-2.0.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1538187722
+export SOURCE_DATE_EPOCH=1551396854
+export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/pytest-randomly
-cp LICENSE %{buildroot}/usr/share/doc/pytest-randomly/LICENSE
+mkdir -p %{buildroot}/usr/share/package-licenses/pytest-randomly
+cp LICENSE %{buildroot}/usr/share/package-licenses/pytest-randomly/LICENSE
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -74,7 +79,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/doc/pytest-randomly/LICENSE
+/usr/share/package-licenses/pytest-randomly/LICENSE
 
 %files python
 %defattr(-,root,root,-)
