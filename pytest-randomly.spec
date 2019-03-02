@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC7125C934883BE5 (me@adamj.eu)
 #
 Name     : pytest-randomly
-Version  : 2.0.0
-Release  : 3
-URL      : https://files.pythonhosted.org/packages/35/72/aae474fbd217a02013a15c89713ae3c043d32c3edb4c4f1d96e6d01a8998/pytest-randomly-2.0.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/35/72/aae474fbd217a02013a15c89713ae3c043d32c3edb4c4f1d96e6d01a8998/pytest-randomly-2.0.0.tar.gz
-Source99 : https://files.pythonhosted.org/packages/35/72/aae474fbd217a02013a15c89713ae3c043d32c3edb4c4f1d96e6d01a8998/pytest-randomly-2.0.0.tar.gz.asc
+Version  : 2.1.0
+Release  : 4
+URL      : https://files.pythonhosted.org/packages/af/fb/01659927efa6865703aeb1df0721532a73f0ea1235cb491f7eb9c1c01353/pytest-randomly-2.1.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/af/fb/01659927efa6865703aeb1df0721532a73f0ea1235cb491f7eb9c1c01353/pytest-randomly-2.1.0.tar.gz
+Source99 : https://files.pythonhosted.org/packages/af/fb/01659927efa6865703aeb1df0721532a73f0ea1235cb491f7eb9c1c01353/pytest-randomly-2.1.0.tar.gz.asc
 Summary  : Pytest plugin to randomly order tests and control random.seed.
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -54,14 +54,14 @@ python3 components for the pytest-randomly package.
 
 
 %prep
-%setup -q -n pytest-randomly-2.0.0
+%setup -q -n pytest-randomly-2.1.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1551396854
+export SOURCE_DATE_EPOCH=1551538530
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
