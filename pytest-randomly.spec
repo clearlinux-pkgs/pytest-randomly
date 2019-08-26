@@ -5,19 +5,21 @@
 # Source0 file verified with key 0xEC7125C934883BE5 (me@adamj.eu)
 #
 Name     : pytest-randomly
-Version  : 3.0.0
-Release  : 8
-URL      : https://files.pythonhosted.org/packages/6f/52/b9afa2023af0b191cc3be32c93781a777def2032417b33b43942b8196df4/pytest-randomly-3.0.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/6f/52/b9afa2023af0b191cc3be32c93781a777def2032417b33b43942b8196df4/pytest-randomly-3.0.0.tar.gz
-Source99 : https://files.pythonhosted.org/packages/6f/52/b9afa2023af0b191cc3be32c93781a777def2032417b33b43942b8196df4/pytest-randomly-3.0.0.tar.gz.asc
+Version  : 3.1.0
+Release  : 9
+URL      : https://files.pythonhosted.org/packages/34/3c/b7f3ebf4b673be9d8a8488af093f36c7392bd87d0d897127e8cb096ff625/pytest-randomly-3.1.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/34/3c/b7f3ebf4b673be9d8a8488af093f36c7392bd87d0d897127e8cb096ff625/pytest-randomly-3.1.0.tar.gz
+Source1 : https://files.pythonhosted.org/packages/34/3c/b7f3ebf4b673be9d8a8488af093f36c7392bd87d0d897127e8cb096ff625/pytest-randomly-3.1.0.tar.gz.asc
 Summary  : Pytest plugin to randomly order tests and control random.seed.
 Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: pytest-randomly-license = %{version}-%{release}
 Requires: pytest-randomly-python = %{version}-%{release}
 Requires: pytest-randomly-python3 = %{version}-%{release}
+Requires: entrypoints
 Requires: pytest
 BuildRequires : buildreq-distutils3
+BuildRequires : entrypoints
 BuildRequires : pytest
 
 %description
@@ -54,14 +56,20 @@ python3 components for the pytest-randomly package.
 
 
 %prep
-%setup -q -n pytest-randomly-3.0.0
+%setup -q -n pytest-randomly-3.1.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1554472020
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1566838459
+# -Werror is for werrorists
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
