@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC7125C934883BE5 (me@adamj.eu)
 #
 Name     : pytest-randomly
-Version  : 3.2.0
-Release  : 12
-URL      : https://files.pythonhosted.org/packages/49/9e/549ccdfdf4b2613b48f7110c13bc7a3e1edf76c9b6d262a7040b1e92bad7/pytest-randomly-3.2.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/49/9e/549ccdfdf4b2613b48f7110c13bc7a3e1edf76c9b6d262a7040b1e92bad7/pytest-randomly-3.2.0.tar.gz
-Source1  : https://files.pythonhosted.org/packages/49/9e/549ccdfdf4b2613b48f7110c13bc7a3e1edf76c9b6d262a7040b1e92bad7/pytest-randomly-3.2.0.tar.gz.asc
+Version  : 3.2.1
+Release  : 13
+URL      : https://files.pythonhosted.org/packages/c4/58/1b0d6aa2a1f6ed0b8868a079a387444094ed8019cd64f342451d2e577779/pytest-randomly-3.2.1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/c4/58/1b0d6aa2a1f6ed0b8868a079a387444094ed8019cd64f342451d2e577779/pytest-randomly-3.2.1.tar.gz
+Source1  : https://files.pythonhosted.org/packages/c4/58/1b0d6aa2a1f6ed0b8868a079a387444094ed8019cd64f342451d2e577779/pytest-randomly-3.2.1.tar.gz.asc
 Summary  : Pytest plugin to randomly order tests and control random.seed.
 Group    : Development/Tools
 License  : BSD-3-Clause
@@ -19,11 +19,8 @@ Requires: pytest-randomly-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
 
 %description
-===============
 pytest-randomly
-===============
-.. image:: https://img.shields.io/travis/pytest-dev/pytest-randomly.svg
-:target: https://travis-ci.org/pytest-dev/pytest-randomly
+        ===============
 
 %package license
 Summary: license components for the pytest-randomly package.
@@ -52,16 +49,15 @@ python3 components for the pytest-randomly package.
 
 
 %prep
-%setup -q -n pytest-randomly-3.2.0
-cd %{_builddir}/pytest-randomly-3.2.0
+%setup -q -n pytest-randomly-3.2.1
+cd %{_builddir}/pytest-randomly-3.2.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1577140295
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1580235151
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
@@ -74,7 +70,7 @@ python3 setup.py build
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pytest-randomly
-cp %{_builddir}/pytest-randomly-3.2.0/LICENSE %{buildroot}/usr/share/package-licenses/pytest-randomly/ba3683686a1251b7d2b4093d4c81ff298bdf483e
+cp %{_builddir}/pytest-randomly-3.2.1/LICENSE %{buildroot}/usr/share/package-licenses/pytest-randomly/2116927e4e391eb0ade630004da6ec32a7c31cca
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -85,7 +81,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/pytest-randomly/ba3683686a1251b7d2b4093d4c81ff298bdf483e
+/usr/share/package-licenses/pytest-randomly/2116927e4e391eb0ade630004da6ec32a7c31cca
 
 %files python
 %defattr(-,root,root,-)
