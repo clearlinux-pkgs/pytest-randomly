@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC7125C934883BE5 (me@adamj.eu)
 #
 Name     : pytest-randomly
-Version  : 3.5.0
-Release  : 25
-URL      : https://files.pythonhosted.org/packages/b5/10/3ab5171daca93c8fe6354daa99d6674fc08c0d8589a0ddc4f5bfa7ae7c08/pytest-randomly-3.5.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/b5/10/3ab5171daca93c8fe6354daa99d6674fc08c0d8589a0ddc4f5bfa7ae7c08/pytest-randomly-3.5.0.tar.gz
-Source1  : https://files.pythonhosted.org/packages/b5/10/3ab5171daca93c8fe6354daa99d6674fc08c0d8589a0ddc4f5bfa7ae7c08/pytest-randomly-3.5.0.tar.gz.asc
+Version  : 3.6.0
+Release  : 26
+URL      : https://files.pythonhosted.org/packages/2d/a0/c15fdf960d04ad23fba5a53b78e0ae52ff0a709c59d5b0aadeaf4018f65c/pytest-randomly-3.6.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/2d/a0/c15fdf960d04ad23fba5a53b78e0ae52ff0a709c59d5b0aadeaf4018f65c/pytest-randomly-3.6.0.tar.gz
+Source1  : https://files.pythonhosted.org/packages/2d/a0/c15fdf960d04ad23fba5a53b78e0ae52ff0a709c59d5b0aadeaf4018f65c/pytest-randomly-3.6.0.tar.gz.asc
 Summary  : Pytest plugin to randomly order tests and control random.seed.
 Group    : Development/Tools
 License  : MIT
@@ -35,6 +35,7 @@ Summary: python3 components for the pytest-randomly package.
 Group: Default
 Requires: python3-core
 Provides: pypi(pytest_randomly)
+Requires: pypi(backports.entry_points_selectable)
 Requires: pypi(pytest)
 
 %description python3
@@ -42,15 +43,15 @@ python3 components for the pytest-randomly package.
 
 
 %prep
-%setup -q -n pytest-randomly-3.5.0
-cd %{_builddir}/pytest-randomly-3.5.0
+%setup -q -n pytest-randomly-3.6.0
+cd %{_builddir}/pytest-randomly-3.6.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1605543562
+export SOURCE_DATE_EPOCH=1617311177
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
