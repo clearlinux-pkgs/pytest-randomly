@@ -5,14 +5,15 @@
 # Source0 file verified with key 0xEC7125C934883BE5 (me@adamj.eu)
 #
 Name     : pytest-randomly
-Version  : 3.6.0
-Release  : 26
-URL      : https://files.pythonhosted.org/packages/2d/a0/c15fdf960d04ad23fba5a53b78e0ae52ff0a709c59d5b0aadeaf4018f65c/pytest-randomly-3.6.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/2d/a0/c15fdf960d04ad23fba5a53b78e0ae52ff0a709c59d5b0aadeaf4018f65c/pytest-randomly-3.6.0.tar.gz
-Source1  : https://files.pythonhosted.org/packages/2d/a0/c15fdf960d04ad23fba5a53b78e0ae52ff0a709c59d5b0aadeaf4018f65c/pytest-randomly-3.6.0.tar.gz.asc
+Version  : 3.7.0
+Release  : 27
+URL      : https://files.pythonhosted.org/packages/b2/8e/b332be63ce2ca0764aed3ba8eeea8ee4542699c3390e05badc72bd5cf07a/pytest-randomly-3.7.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/b2/8e/b332be63ce2ca0764aed3ba8eeea8ee4542699c3390e05badc72bd5cf07a/pytest-randomly-3.7.0.tar.gz
+Source1  : https://files.pythonhosted.org/packages/b2/8e/b332be63ce2ca0764aed3ba8eeea8ee4542699c3390e05badc72bd5cf07a/pytest-randomly-3.7.0.tar.gz.asc
 Summary  : Pytest plugin to randomly order tests and control random.seed.
 Group    : Development/Tools
 License  : MIT
+Requires: pytest-randomly-license = %{version}-%{release}
 Requires: pytest-randomly-python = %{version}-%{release}
 Requires: pytest-randomly-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
@@ -20,6 +21,14 @@ BuildRequires : buildreq-distutils3
 %description
 pytest-randomly
         ===============
+
+%package license
+Summary: license components for the pytest-randomly package.
+Group: Default
+
+%description license
+license components for the pytest-randomly package.
+
 
 %package python
 Summary: python components for the pytest-randomly package.
@@ -35,7 +44,7 @@ Summary: python3 components for the pytest-randomly package.
 Group: Default
 Requires: python3-core
 Provides: pypi(pytest_randomly)
-Requires: pypi(backports.entry_points_selectable)
+Requires: pypi(importlib_metadata)
 Requires: pypi(pytest)
 
 %description python3
@@ -43,15 +52,15 @@ python3 components for the pytest-randomly package.
 
 
 %prep
-%setup -q -n pytest-randomly-3.6.0
-cd %{_builddir}/pytest-randomly-3.6.0
+%setup -q -n pytest-randomly-3.7.0
+cd %{_builddir}/pytest-randomly-3.7.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1617311177
+export SOURCE_DATE_EPOCH=1618245661
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -63,6 +72,8 @@ python3 setup.py build
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/pytest-randomly
+cp %{_builddir}/pytest-randomly-3.7.0/LICENSE %{buildroot}/usr/share/package-licenses/pytest-randomly/357dd8dc959a96d3bc13e11e940ccc7dd955492b
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -70,6 +81,10 @@ echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/pytest-randomly/357dd8dc959a96d3bc13e11e940ccc7dd955492b
 
 %files python
 %defattr(-,root,root,-)
