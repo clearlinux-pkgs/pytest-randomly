@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xEC7125C934883BE5 (me@adamj.eu)
 #
 Name     : pytest-randomly
-Version  : 3.7.0
-Release  : 29
-URL      : https://files.pythonhosted.org/packages/b2/8e/b332be63ce2ca0764aed3ba8eeea8ee4542699c3390e05badc72bd5cf07a/pytest-randomly-3.7.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/b2/8e/b332be63ce2ca0764aed3ba8eeea8ee4542699c3390e05badc72bd5cf07a/pytest-randomly-3.7.0.tar.gz
-Source1  : https://files.pythonhosted.org/packages/b2/8e/b332be63ce2ca0764aed3ba8eeea8ee4542699c3390e05badc72bd5cf07a/pytest-randomly-3.7.0.tar.gz.asc
+Version  : 3.8.0
+Release  : 30
+URL      : https://files.pythonhosted.org/packages/e6/04/8d27d8a439c4499d68355a7aa7121f3b315812157bc180ed7646fde9d89b/pytest-randomly-3.8.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/e6/04/8d27d8a439c4499d68355a7aa7121f3b315812157bc180ed7646fde9d89b/pytest-randomly-3.8.0.tar.gz
+Source1  : https://files.pythonhosted.org/packages/e6/04/8d27d8a439c4499d68355a7aa7121f3b315812157bc180ed7646fde9d89b/pytest-randomly-3.8.0.tar.gz.asc
 Summary  : Pytest plugin to randomly order tests and control random.seed.
 Group    : Development/Tools
 License  : MIT
@@ -52,15 +52,15 @@ python3 components for the pytest-randomly package.
 
 
 %prep
-%setup -q -n pytest-randomly-3.7.0
-cd %{_builddir}/pytest-randomly-3.7.0
+%setup -q -n pytest-randomly-3.8.0
+cd %{_builddir}/pytest-randomly-3.8.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1618245661
+export SOURCE_DATE_EPOCH=1620660187
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -73,7 +73,7 @@ python3 setup.py build
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pytest-randomly
-cp %{_builddir}/pytest-randomly-3.7.0/LICENSE %{buildroot}/usr/share/package-licenses/pytest-randomly/357dd8dc959a96d3bc13e11e940ccc7dd955492b
+cp %{_builddir}/pytest-randomly-3.8.0/LICENSE %{buildroot}/usr/share/package-licenses/pytest-randomly/357dd8dc959a96d3bc13e11e940ccc7dd955492b
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
