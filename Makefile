@@ -1,5 +1,5 @@
 PKG_NAME := pytest-randomly
-URL = https://files.pythonhosted.org/packages/57/b1/f27037dfdc5bb8e82fb55967b85a5cea0d26da1eacc4866bea56b3b33119/pytest-randomly-3.10.2.tar.gz
+URL = https://files.pythonhosted.org/packages/dc/4b/5c4e0285f8d03a1f16ef585314ee9b4b6303700459b3ca17782ff3e8b251/pytest-randomly-3.10.3.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
